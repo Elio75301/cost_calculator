@@ -1,0 +1,79 @@
+{% extends 'cost_calculator/base.html' %}
+
+{% block title %}Αποτελέσματα{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+    <div class="card-body">
+        <h2 class="card-title text-center mb-4">Αποτελέσματα Υπολογισμού Κόστους</h2>
+
+        <div class="section-header">
+            <h4>Α. Κόστος Καλλιέργειας</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Λίπανση & Φυτοπροστασία:</strong> {{ calculation.fertilizer_cost }} €</p>
+                <p><strong>Άρδευση:</strong> {{ calculation.irrigation_cost }} €</p>
+                <p><strong>ΕΛΓΑ:</strong> {{ calculation.elga_cost }} €</p>
+                <p><strong>Λοιπές εργασίες:</strong> {{ calculation.other_works_cost }} €</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>ΟΣΔΕ:</strong> {{ calculation.osde_cost }} €</p>
+                <p><strong>Γεωπόνος:</strong> {{ calculation.agronomist_cost }} €</p>
+                <p><strong>Πιστοποιήσεις:</strong> {{ calculation.certification_cost }} €</p>
+            </div>
+        </div>
+                <div class="alert alert-info">
+                    <strong>Συνολικό κόστος καλλιέργειας:</strong> {{ calculation.get_cultivation_cost }}€
+                </div>
+
+                <div class="section-header">
+                    <h4>Β. Κόστος Συγκομιδής</h4>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><strong>Ημερομίσθιο:</strong> {{ calculation.daily_wage }}€</p>
+                        <p><strong>Ημέρες εργασίας:</strong> {{ calculation.working_days }}</p>
+                        <p><strong>Συντήρηση μηχανημάτων:</strong> {{ calculation.machinery_maintenance }}€</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Καύσιμα:</strong> {{ calculation.fuel_cost }}€</p>
+                        <p><strong>Παρελκόμενα:</strong> {{ calculation.equipment_cost }}€</p>
+                        <p><strong>Μεταφορικά:</strong> {{ calculation.transport_cost }}€</p>
+                    </div>
+                </div>
+                <div class="alert alert-info">
+                    <strong>Συνολικό κόστος συγκομιδής:</strong> {{ calculation.get_harvest_cost }}€
+                </div>
+
+                <div class="section-header">
+                    <h4>Γ. Κόστος Έκθλιψης</h4>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p><strong>Συνολική παραγωγή:</strong> {{ calculation.total_oil_production }} kg</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Ποσοστό ελαιοτριβείου:</strong> {{ calculation.mill_percentage }}%</p>
+                    </div>
+                </div>
+                <div class="alert alert-info">
+                    <strong>Συνολικό κόστος έκθλιψης:</strong> {{ calculation.get_mill_cost }}€
+                </div>
+                <small class="text-muted mb-3 d-block">* Το κόστος έκθλιψης υπολογίζεται ως ποσοστό του κόστους παραγωγής</small>
+                <div class="alert alert-success">
+                    <h4 class="alert-heading">Τελικά Αποτελέσματα</h4>
+                    <p><strong>Συνολικό κόστος:</strong> {{ calculation.get_total_cost }}€</p>
+                    <p><strong>Κόστος ανά κιλό:</strong> {{ calculation.get_cost_per_kg|floatformat:2 }}€/kg</p>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{% url 'calculate_cost' %}" class="btn btn-success btn-lg">Νέος Υπολογισμός</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

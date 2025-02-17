@@ -1,0 +1,114 @@
+{% extends 'cost_calculator/base.html' %}
+
+{% block title %}Εισαγωγή Στοιχείων{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Υπολογισμός Κόστους Παραγωγής Ελαιολάδου</h2>
+                
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="section-header">
+                        <h4>Α. Κόστος Καλλιέργειας</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="{{ form.fertilizer_cost.id_for_label }}">{{ form.fertilizer_cost.label }}</label>
+                                {{ form.fertilizer_cost }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.irrigation_cost.id_for_label }}">{{ form.irrigation_cost.label }}</label>
+                                {{ form.irrigation_cost }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.other_works_cost.id_for_label }}">{{ form.other_works_cost.label }}</label>
+                                {{ form.other_works_cost }}
+                                <small class="text-muted">Κλάδεμα, χορτοκοπή, ημερομίσθια κ.α.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.elga_cost.id_for_label }}">{{ form.elga_cost.label }}</label>
+                                {{ form.elga_cost }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="{{ form.osde_cost.id_for_label }}">{{ form.osde_cost.label }}</label>
+                                {{ form.osde_cost }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.agronomist_cost.id_for_label }}">{{ form.agronomist_cost.label }}</label>
+                                {{ form.agronomist_cost }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.certification_cost.id_for_label }}">{{ form.certification_cost.label }}</label>
+                                {{ form.certification_cost }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-header">
+                        <h4>Β. Κόστος Συγκομιδής</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="{{ form.daily_wage.id_for_label }}">{{ form.daily_wage.label }}</label>
+                                {{ form.daily_wage }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.working_days.id_for_label }}">{{ form.working_days.label }}</label>
+                                {{ form.working_days }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.machinery_maintenance.id_for_label }}">{{ form.machinery_maintenance.label }}</label>
+                                {{ form.machinery_maintenance }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="{{ form.fuel_cost.id_for_label }}">{{ form.fuel_cost.label }}</label>
+                                {{ form.fuel_cost }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.equipment_cost.id_for_label }}">{{ form.equipment_cost.label }}</label>
+                                {{ form.equipment_cost }}
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.transport_cost.id_for_label }}">{{ form.transport_cost.label }}</label>
+                                {{ form.transport_cost }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-header">
+                        <h4>Γ. Κόστος Έκθλιψης</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="{{ form.total_oil_production.id_for_label }}">{{ form.total_oil_production.label }}</label>
+                                {{ form.total_oil_production }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="{{ form.mill_percentage.id_for_label }}">{{ form.mill_percentage.label }}</label>
+                                {{ form.mill_percentage }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">Υπολογισμός</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
